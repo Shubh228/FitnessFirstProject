@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import project.st991558097.shubh.R
+import project.st991558097.shubh.data.WorkoutItem
 
 class SelectionFragment : Fragment() {
 
-    private var workoutsList:ArrayList<workoutItem>?=null
+    private var workoutsList:ArrayList<WorkoutItem>?=null
     private lateinit var username:String
 
     private lateinit var database: FirebaseDatabase
@@ -60,13 +60,10 @@ class SelectionFragment : Fragment() {
                     for (item in snapshot.children){
                         val name = item.key.toString()
                         val image = item.child("Image").value.toString()
-                        Log.d("NAME", name)
-                        println(name)
-                        println(image)
-                        workoutsList!!.add(workoutItem(image, name))
+                        workoutsList!!.add(WorkoutItem(image, name))
                     }
                 }
-                recView.adapter = OnboardingAdapter(workoutsList!! as List<workoutItem>)
+                recView.adapter = OnboardingAdapter(workoutsList!! as List<WorkoutItem>)
             }
 
             override fun onCancelled(error: DatabaseError) {
