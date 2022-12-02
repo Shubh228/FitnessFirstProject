@@ -39,10 +39,10 @@ class WorkoutListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val binding = WorkoutListRowBinding.bind(itemView)
 
         fun onBind(workoutItems:WorkoutItem){
-            binding.workoutName.text = workoutItems.workoutName
-            var image = workoutItems.imageUri
-            Log.d("image URL", image)
-            Picasso.get().load(image).into(binding.workoutImg)
+            binding.name= workoutItems.workoutName
+            binding.image = workoutItems.imageUri
+            /*Log.d("image URL", image)
+            Picasso.get().load(image).into(binding.workoutImg)*/
         }
     }
 }

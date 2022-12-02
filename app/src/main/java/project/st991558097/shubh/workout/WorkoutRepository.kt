@@ -21,31 +21,17 @@ class WorkoutRepository {
     private val email = user!!.email
     private val username = email?.split("@")?.get(0).toString()
     private val database= Firebase.database
-    //private val dbRef = database.getReference("Users").child(username).child("Workouts")
-   private val dbRef = database.getReference("Workouts")
+    private val dbRef = database.getReference("Users").child(username).child("Workouts")
 
     fun fetchWorkoutList(liveData: MutableLiveData<List<WorkoutItem>>){
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("snapshot", snapshot.value.toString())
-               /* val workoutItems: List<WorkoutItem> = snapshot.children.map{
-                        it -> it.getValue(WorkoutItem::class.java)!!
-                }*/
-
                 val workoutItems: ArrayList<WorkoutItem> = arrayListOf()
-
                 for(data in snapshot.children){
-                    val name = data.child("name").value.toString()
-                    val img_url = data.child("Image").value.toString()
+                    val name = data.child("workoutName").value.toString()
+                    val img_url = data.child("imageUri").value.toString()
                     workoutItems.add(WorkoutItem(name, img_url))
                 }
-
-
-
-                Log.d("snapshot",workoutItems.toString())
-
-
-
                 liveData.postValue(workoutItems as List<WorkoutItem>)
             }
 

@@ -19,7 +19,7 @@ import project.st991558097.shubh.data.WorkoutItem
 class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Adapter<OnboardingAdapter.MyViewHolder>(){
 
 
-    private var workoutList: ArrayList<String> = arrayListOf()
+    private var workoutList: ArrayList<WorkoutItem> = arrayListOf()
     private var removeList:ArrayList<String> = arrayListOf()
     private lateinit var username:String
     val user = Firebase.auth.currentUser
@@ -51,7 +51,7 @@ class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Ad
                 removeWorkout()
             }
             else{
-                workoutList.add(item.workoutName)
+                workoutList.add(WorkoutItem(item.workoutName, item.imageUri))
                 holder.cardView.isSelected = true
                 holder.cardView.setBackgroundColor(Color.parseColor("#ADD8E6"))
                 addWorkout()
@@ -76,7 +76,9 @@ class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Ad
 
     private fun addWorkout() {
         for(workout in workoutList) {
-            dbReference.child("Users").child(username).child("Workouts").child(workout).setValue("")
+            val n = workout.workoutName
+            val i = workout.imageUri
+            dbReference.child("Users").child(username).child("Workouts").child(n).setValue(WorkoutItem(n,i))
             workoutList.remove(workout)
         }
     }

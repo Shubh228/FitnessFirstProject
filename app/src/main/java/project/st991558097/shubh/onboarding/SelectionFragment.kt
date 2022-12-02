@@ -60,7 +60,7 @@ class SelectionFragment : Fragment() {
                     for (item in snapshot.children){
                         val name = item.key.toString()
                         val image = item.child("Image").value.toString()
-                        workoutsList!!.add(WorkoutItem(image, name))
+                        workoutsList!!.add(WorkoutItem(name, image))
                     }
                 }
                 recView.adapter = OnboardingAdapter(workoutsList!! as List<WorkoutItem>)

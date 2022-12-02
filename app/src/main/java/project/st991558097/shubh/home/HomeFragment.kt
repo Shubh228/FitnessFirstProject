@@ -22,6 +22,9 @@ import project.st991558097.shubh.workout.WorkoutListAdapter
 
 class HomeFragment : Fragment() {
 
+    private val viewModel: WorkoutViewModel by lazy {
+        ViewModelProvider(requireActivity())[WorkoutViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,9 +35,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         //binding.lifecycleOwner= this
-
-        val viewModel: WorkoutViewModel = ViewModelProvider(requireActivity())[WorkoutViewModel::class.java]
-
 
         val workoutListAdapter = WorkoutListAdapter()
         view.findViewById<RecyclerView>(R.id.homeRecyclerView).adapter = workoutListAdapter
@@ -54,9 +54,9 @@ class HomeFragment : Fragment() {
         return view
     }
 
-   /* @BindingAdapter("setItems")
+    @BindingAdapter("setItems")
     fun setItems(recyclerView: RecyclerView, list:List<WorkoutItem>?){
         (recyclerView.adapter as WorkoutListAdapter).setItems(list)
-    }*/
+    }
 
 }
