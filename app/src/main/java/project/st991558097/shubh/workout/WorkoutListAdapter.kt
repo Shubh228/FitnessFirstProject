@@ -1,16 +1,26 @@
 package project.st991558097.shubh.workout
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.R
 import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.databinding.WorkoutListRowBinding
+import java.lang.ref.WeakReference
 
-class WorkoutListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WorkoutListAdapter(private val callbackWeakReference: WeakReference<WorkoutItemInterface>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    interface WorkoutItemInterface{
+        fun onWorkoutItemClicked(name: String, img:String){
+
+        }
+    }
     private val workoutItems =  mutableListOf<WorkoutItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -18,7 +28,10 @@ class WorkoutListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as WorkoutItemViewHolder).onBind(workoutItems[position])
+        (holder as WorkoutItemViewHolder).onBind(workoutItems[position]){
+            name,img -> callbackWeakReference.get()?.onWorkoutItemClicked(name, img)
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -38,11 +51,13 @@ class WorkoutListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val binding = WorkoutListRowBinding.bind(itemView)
 
-        fun onBind(workoutItems:WorkoutItem){
+        fun onBind(workoutItems:WorkoutItem, onClick: (String, String) -> Unit){
             binding.name= workoutItems.workoutName
             binding.image = workoutItems.imageUri
-            /*Log.d("image URL", image)
-            Picasso.get().load(image).into(binding.workoutImg)*/
+
+            binding.root.setOnClickListener{
+                onClick(workoutItems.workoutName, workoutItems.imageUri)
+            }
         }
     }
 }

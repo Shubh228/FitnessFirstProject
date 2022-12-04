@@ -19,8 +19,9 @@ import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.viewModel.WorkoutViewModel
 import project.st991558097.shubh.workout.WorkoutActivity
 import project.st991558097.shubh.workout.WorkoutListAdapter
+import java.lang.ref.WeakReference
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {
 
     private val viewModel: WorkoutViewModel by lazy {
         ViewModelProvider(requireActivity())[WorkoutViewModel::class.java]
@@ -36,7 +37,7 @@ class HomeFragment : Fragment() {
 
         //binding.lifecycleOwner= this
 
-        val workoutListAdapter = WorkoutListAdapter()
+        val workoutListAdapter = WorkoutListAdapter(WeakReference(this))
         view.findViewById<RecyclerView>(R.id.homeRecyclerView).adapter = workoutListAdapter
         view.findViewById<RecyclerView>(R.id.homeRecyclerView).layoutManager = LinearLayoutManager(this.context)
 
@@ -46,12 +47,15 @@ class HomeFragment : Fragment() {
             workoutItem -> workoutListAdapter.setItems(workoutItem)
             Log.d("From home fragment", workoutItem.toString())
         }
-
-        view.findViewById<Button>(R.id.goToDetails).setOnClickListener {
-            var intent = Intent(context, WorkoutActivity::class.java)
-            startActivity(intent)
-        }
         return view
+    }
+
+    override fun onWorkoutItemClicked(name: String, img:String) {
+        var intent = Intent(context, WorkoutActivity::class.java).apply {
+            putExtra(WorkoutActivity.ARG_NAME, name)
+            putExtra(WorkoutActivity.ARG_IMG, img)
+        }
+        startActivity(intent)
     }
 
     @BindingAdapter("setItems")

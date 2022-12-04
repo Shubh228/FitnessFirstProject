@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import project.st991558097.shubh.data.WorkoutItem
-import project.st991558097.shubh.workout.WorkoutRepository
+import project.st991558097.shubh.repository.WorkoutRepository
 
 class WorkoutViewModel : ViewModel() {
 

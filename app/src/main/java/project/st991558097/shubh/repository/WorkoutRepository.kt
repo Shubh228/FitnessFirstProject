@@ -1,19 +1,13 @@
-package project.st991558097.shubh.workout
+package project.st991558097.shubh.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import project.st991558097.shubh.data.UserWorkoutItem
 import project.st991558097.shubh.data.WorkoutItem
-import java.time.Duration
-import kotlin.math.log
 
 class WorkoutRepository {
 
@@ -41,7 +35,4 @@ class WorkoutRepository {
 
         })
     }
-
-
-
 }

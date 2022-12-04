@@ -5,6 +5,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.data.WorkoutItem
+import project.st991558097.shubh.data.WorkoutRecordItem
+import project.st991558097.shubh.workout.RecordsListAdapter
 import project.st991558097.shubh.workout.WorkoutListAdapter
 
 // region RecyclerView
@@ -14,9 +16,19 @@ fun setItems(recyclerView: RecyclerView, list: List<WorkoutItem>?) {
 }
 // endregion RecyclerView
 
+@BindingAdapter("setRecords")
+fun setRecords(recyclerView: RecyclerView, list: List<WorkoutRecordItem>?) {
+    (recyclerView.adapter as RecordsListAdapter).setRecords(list)
+}
+
 // region ImageView
 @BindingAdapter("loadWithPicasso")
 fun loadWithPicasso(imageView: ImageView, imageUrl: String) {
     Picasso.get().load(imageUrl).into(imageView)
 }
 // endregion ImageView
+
+@BindingAdapter("setRecordList")
+fun setRecordList(recyclerView: RecyclerView, list:List<WorkoutRecordItem>?){
+    (recyclerView.adapter as RecordsListAdapter).setRecords(list)
+}
