@@ -14,10 +14,13 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.R
+import project.st991558097.shubh.data.WorkoutItem
 
-class OnboardingAdapter(private val workouts:List<workoutItem>): RecyclerView.Adapter<OnboardingAdapter.MyViewHolder>(){
+class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Adapter<OnboardingAdapter.MyViewHolder>(){
 
-    var workoutList: ArrayList<String> = arrayListOf()
+
+    private var workoutList: ArrayList<WorkoutItem> = arrayListOf()
+    private var removeList:ArrayList<String> = arrayListOf()
     private lateinit var username:String
     val user = Firebase.auth.currentUser
     private var dbReference: DatabaseReference = Firebase.database.reference
@@ -29,12 +32,12 @@ class OnboardingAdapter(private val workouts:List<workoutItem>): RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemview = LayoutInflater.from(parent.context).inflate(R.layout.workout_display_row,parent,false)
+        val itemview = LayoutInflater.from(parent.context).inflate(R.layout.signup_workout_display_row,parent,false)
         return MyViewHolder(itemview)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item: workoutItem = workouts[position]
+        val item: WorkoutItem = workouts[position]
 
         getUserInfo()
         Picasso.get().load(item.imageUri).into(holder.imageV)
@@ -44,14 +47,11 @@ class OnboardingAdapter(private val workouts:List<workoutItem>): RecyclerView.Ad
             if (holder.cardView.isSelected){
                 holder.cardView.setBackgroundColor(Color.parseColor("#FFFFFF"))
                 holder.cardView.isSelected = false
-                if (workoutList.contains(item.workoutName)){
-                    workoutList.remove(item.workoutName)
-                }
-                addWorkout()
+                removeList.add(item.workoutName)
+                removeWorkout()
             }
             else{
-                workoutList.add(item.workoutName)
-
+                workoutList.add(WorkoutItem(item.workoutName, item.imageUri))
                 holder.cardView.isSelected = true
                 holder.cardView.setBackgroundColor(Color.parseColor("#ADD8E6"))
                 addWorkout()
@@ -67,9 +67,20 @@ class OnboardingAdapter(private val workouts:List<workoutItem>): RecyclerView.Ad
         }
     }
 
+    private fun removeWorkout(){
+        for(rm in removeList){
+            dbReference.child("Users").child(username).child("Workouts").child(rm).setValue(null)
+            removeList.remove(rm)
+        }
+    }
 
     private fun addWorkout() {
-        dbReference.child("Users").child(username).child("Workouts").setValue(workoutList)
+        for(workout in workoutList) {
+            val n = workout.workoutName
+            val i = workout.imageUri
+            dbReference.child("Users").child(username).child("Workouts").child(n).setValue(WorkoutItem(n,i))
+            workoutList.remove(workout)
+        }
     }
 
     override fun getItemCount(): Int {

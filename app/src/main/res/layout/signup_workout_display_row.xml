@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color">
+
+        <RelativeLayout
+            android:id="@+id/workoutCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/workoutImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/icon_cycling"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/workoutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workout name"
+                android:textSize="28dp"
+                android:layout_toRightOf="@+id/workoutImg"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+

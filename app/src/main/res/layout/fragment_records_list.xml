@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".workout.RecordsListFragment">
+
+    <data>
+        <variable
+            name="recVM"
+            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recordsListRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="620dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:setRecordList="@{recVM.recordLiveData}" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/noListText"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:src="@drawable/nodata_img"
+                    android:layout_centerInParent="true"/>
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/goToAddRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/scroll"
+            android:src="@drawable/add"
+            android:layout_margin="20dp" />
+
+    </RelativeLayout>
+
+</layout>

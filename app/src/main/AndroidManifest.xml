@@ -16,6 +16,13 @@
         android:theme="@style/Theme.WorkoutFInalProject"
         tools:targetApi="31">
         <activity
+            android:name=".workout.WorkoutActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".home.FFHomeActivity"
             android:exported="false">
             <meta-data
@@ -42,6 +49,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

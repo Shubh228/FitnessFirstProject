@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/workout_navigation"
+    app:startDestination="@id/workoutDetailsFragment">
+
+    <fragment
+        android:id="@+id/workoutDetailsFragment"
+        android:name="project.st991558097.shubh.workout.WorkoutDetailsFragment"
+        android:label="fragment_workout_details"
+        tools:layout="@layout/fragment_workout_details" >
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_recordsListFragment"
+            app:destination="@id/recordsListFragment" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_addRecordFragment"
+            app:destination="@id/addRecordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordsListFragment"
+        android:name="project.st991558097.shubh.workout.RecordsListFragment"
+        android:label="fragment_records_list"
+        tools:layout="@layout/fragment_records_list" >
+        <action
+            android:id="@+id/action_recordsListFragment_to_addRecordFragment2"
+            app:destination="@id/addRecordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRecordFragment"
+        android:name="project.st991558097.shubh.workout.AddRecordFragment"
+        android:label="fragment_add_record"
+        tools:layout="@layout/fragment_add_record" >
+        <action
+            android:id="@+id/action_addRecordFragment_to_recordsListFragment"
+            app:destination="@id/recordsListFragment" />
+    </fragment>
+</navigation>
