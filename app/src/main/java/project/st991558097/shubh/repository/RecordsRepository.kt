@@ -30,12 +30,42 @@ class RecordsRepository {
                 for(data in snapshot.children){
                     val name = data.child("name").value.toString()
                     val date = data.child("date").value.toString()
-                    val startTime = data.child("start").value.toString()
-                    val endTime = data.child("end").value.toString()
+                    val startTime = data.child("startTime").value.toString()
+                    val endTime = data.child("endTime").value.toString()
                     val duration = data.child("duration").value.toString()
                     var rating = data.child("rating").value.toString()
                     var feedback = data.child("feedback").value.toString()
-                    records.add(WorkoutRecordItem(name,date, startTime, endTime, duration, rating, feedback, uri))
+                    Log.d("key", data.key!!)
+                    records.add(WorkoutRecordItem(data.key!!, name,date, startTime, endTime, duration, rating, feedback, uri))
+                }
+                liveData.postValue(records as List<WorkoutRecordItem>)
+                Log.d("Records", records.toString())
+                Log.d("Image", uri)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+    }
+
+    fun fetchRecentList(liveData: MutableLiveData<List<WorkoutRecordItem>>, name:String, uri:String){
+        dbRef.child(name).limitToFirst(5).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val records: ArrayList<WorkoutRecordItem> = arrayListOf()
+                for(data in snapshot.children){
+                    val name = data.child("name").value.toString()
+                    val date = data.child("date").value.toString()
+                    val startTime = data.child("startTime").value.toString()
+                    val endTime = data.child("endTime").value.toString()
+                    val duration = data.child("duration").value.toString()
+                    var rating = data.child("rating").value.toString()
+                    var feedback = data.child("feedback").value.toString()
+                    Log.d("key", data.key!!)
+                    records.add(WorkoutRecordItem(data.key!!, name,date, startTime, endTime, duration, rating, feedback, uri))
                 }
                 liveData.postValue(records as List<WorkoutRecordItem>)
                 Log.d("Records", records.toString())

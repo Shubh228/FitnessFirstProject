@@ -16,18 +16,12 @@
         <action
             android:id="@+id/action_workoutDetailsFragment_to_addRecordFragment"
             app:destination="@id/addRecordFragment" />
-        <action
-            android:id="@+id/action_workoutDetailsFragment_to_recordDetailsFragment"
-            app:destination="@id/recordDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/recordsListFragment"
         android:name="project.st991558097.shubh.workout.RecordsListFragment"
         android:label="fragment_records_list"
         tools:layout="@layout/fragment_records_list" >
-        <action
-            android:id="@+id/action_recordsListFragment_to_recordDetailsFragment"
-            app:destination="@id/recordDetailsFragment" />
         <action
             android:id="@+id/action_recordsListFragment_to_addRecordFragment2"
             app:destination="@id/addRecordFragment" />
@@ -41,18 +35,4 @@
             android:id="@+id/action_addRecordFragment_to_recordsListFragment"
             app:destination="@id/recordsListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/recordDetailsFragment"
-        android:name="project.st991558097.shubh.workout.RecordDetailsFragment"
-        android:label="fragment_record_details"
-        tools:layout="@layout/fragment_record_details" >
-        <action
-            android:id="@+id/action_recordDetailsFragment_to_editRecordFragment"
-            app:destination="@id/editRecordFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editRecordFragment"
-        android:name="project.st991558097.shubh.workout.EditRecordFragment"
-        android:label="fragment_edit_record"
-        tools:layout="@layout/fragment_edit_record" />
 </navigation>

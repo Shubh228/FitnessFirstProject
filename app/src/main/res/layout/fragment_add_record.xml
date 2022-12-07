@@ -1,14 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".workout.AddRecordFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="image"
+            type="String" />
+        <variable
+            name="name"
+            type="String" />
+        <variable
+            name="date"
+            type="String" />
+        <variable
+            name="startTime"
+            type="String" />
+        <variable
+            name="endTime"
+            type="String" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="10dp"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
+        >
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/workoutImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:loadWithPicasso="@{image}"
+                tools:src="@drawable/icon_cycling"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/workoutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@+id/workoutImg"
+                android:textColor="@color/black"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                android:text="@{name}"
+                app:fontFamily="@font/baloo_bhai_2_bold"
+                tools:text="name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:layout_below="@+id/workoutName"
+                android:layout_toRightOf="@+id/workoutImg"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                android:text="Add record details"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/contentTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/header">
+
+            <nl.joery.timerangepicker.TimeRangePicker
+                android:id="@+id/timePicker"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                app:trp_clockLabelSize="14sp"
+                app:trp_endTime="18:30"
+                app:trp_hourFormat="FORMAT_12"
+                app:trp_sliderRangeColor="@color/blue"
+                app:trp_sliderWidth="18dp"
+                app:trp_startTime="10:00"
+                app:trp_thumbColor="@color/blue"
+                app:trp_thumbSize="18dp" />
+
+            <RelativeLayout
+                android:id="@+id/workoutInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/timePicker">
+
+                <ImageView
+                    android:id="@+id/iconCalendar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icon_calendar"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/dateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconCalendar"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/workoutDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{date}"
+                    android:textSize="18dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconCalendar"
+                    android:layout_below="@+id/dateLabel"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:id="@+id/iconStart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_start"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/startLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start at"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconStart"
+                    android:layout_below="@+id/workoutDate"
+                    android:textColor="@color/black"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/workoutStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0:00"
+                    android:text="@{startTime}"
+                    android:textSize="18dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconStart"
+                    android:layout_below="@+id/startLabel"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:id="@+id/iconEnd"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="145dp"
+                    android:src="@drawable/icon_end"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/endLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End at"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconEnd"
+                    android:layout_below="@+id/workoutStartTime"
+                    android:textColor="@color/black"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/workoutEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{endTime}"
+                    android:textSize="18dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/iconEnd"
+                    android:layout_below="@+id/endLabel"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contentTop">
+
+            <RelativeLayout
+                android:id="@+id/contentBottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_below="@+id/contentTop">
+
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/workoutFeedback"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/ratingBar"
+                    android:layout_centerInParent="true"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:text="Awesome workout!" />
+
+
+                <Button
+                    android:id="@+id/addRecordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/workoutFeedback"
+                    android:background="@drawable/custom_button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    android:text="add record" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

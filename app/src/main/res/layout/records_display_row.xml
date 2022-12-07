@@ -12,10 +12,9 @@
         app:cardCornerRadius="15dp">
 
         <RelativeLayout
-            android:background="@color/blue"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#7EBADF"
             android:shadowRadius="5">
 
             <RelativeLayout
@@ -26,74 +25,74 @@
                     android:id="@+id/workoutImg"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    app:loadWithPicasso="@{img}"
-                    android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    tools:src="@drawable/icon_cycling"/>
+                    android:layout_marginLeft="5dp"
+                    app:loadWithPicasso="@{img}"
+                    tools:src="@drawable/icon_cycling" />
 
                 <RelativeLayout
                     android:id="@+id/relView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/workoutImg"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp">
-
-
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/workoutImg">
 
                     <TextView
                         android:id="@+id/workoutDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{date}"
-                        tools:text="11/12/2022"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="24sp"/>
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="11/12/2022" />
+
                     <TextView
                         android:id="@+id/startLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/workoutDate"
                         android:text="Start - "
                         android:textColor="@color/black"
-                        android:layout_below="@+id/workoutDate"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
+
                     <TextView
                         android:id="@+id/workoutStartTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{start}"
-                        tools:text="12:00"
-                        android:textColor="@color/black"
-                        android:layout_toEndOf="@+id/startLabel"
                         android:layout_below="@+id/workoutDate"
-                        android:textSize="18sp"/>
+                        android:layout_toEndOf="@+id/startLabel"
+                        android:text="@{start}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="12:00" />
+
                     <TextView
                         android:id="@+id/endLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/startLabel"
                         android:text="End   - "
                         android:textColor="@color/black"
-                        android:layout_below="@+id/startLabel"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
+
                     <TextView
                         android:id="@+id/workoutEndTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{end}"
-                        tools:text="13:00"
-                        android:textColor="@color/black"
-                        android:layout_toEndOf="@+id/endLabel"
                         android:layout_below="@+id/workoutStartTime"
-                        android:textSize="18sp"/>
-
-
+                        android:layout_toEndOf="@+id/endLabel"
+                        android:text="@{end}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="13:00" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="209dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="-15dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="42dp"
                     android:layout_marginRight="4dp"
                     android:layout_toRightOf="@+id/relView">
@@ -142,7 +141,6 @@
 
 
                 </RelativeLayout>
-
 
 
             </RelativeLayout>

@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.BindingAdapter
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +15,7 @@ import project.st991558097.shubh.R
 import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.viewModel.WorkoutViewModel
 import project.st991558097.shubh.workout.WorkoutActivity
-import project.st991558097.shubh.workout.WorkoutListAdapter
+import project.st991558097.shubh.workout.workoutAdapters.WorkoutListAdapter
 import java.lang.ref.WeakReference
 
 class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {

@@ -36,6 +36,16 @@ android {
         dataBinding true
         viewBinding true
     }
+
+    /*allprojects {
+        repositories {
+            // Make sure that you have the following two repositories
+            google()  // Google's Maven repository
+
+            mavenCentral()  // Maven Central repository
+            maven { url 'https://jitpack.io' }
+        }
+    }*/
 }
 
 dependencies {
@@ -76,5 +86,17 @@ dependencies {
 
     //circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Custom time picker UI plugin
+    implementation 'nl.joery.timerangepicker:timerangepicker:1.0.0'
+//    implementation 'com.github.commandiron:WheelPickerCompose:1.1.5'
+
+
+    //material 3 date picker
+    implementation 'com.google.android.material:material:1.4.0'
+
+    //Recyclerview swipe decorator
+    //implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
 
 }

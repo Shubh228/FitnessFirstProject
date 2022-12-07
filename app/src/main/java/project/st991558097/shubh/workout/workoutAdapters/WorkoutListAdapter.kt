@@ -1,14 +1,9 @@
-package project.st991558097.shubh.workout
+package project.st991558097.shubh.workout.workoutAdapters
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import project.st991558097.shubh.R
 import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.databinding.WorkoutListRowBinding

@@ -1,6 +1,8 @@
 package project.st991558097.shubh.data
 
+
 data class WorkoutRecordItem (
+    var id: String ="",
     var name: String = "",
     var date: String = "",
     var startTime:String = "",

@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.data.WorkoutRecordItem
-import project.st991558097.shubh.workout.RecordsListAdapter
-import project.st991558097.shubh.workout.WorkoutListAdapter
+import project.st991558097.shubh.workout.workoutAdapters.RecordsListAdapter
+import project.st991558097.shubh.workout.workoutAdapters.WorkoutListAdapter
 
 // region RecyclerView
 @BindingAdapter("setItems")

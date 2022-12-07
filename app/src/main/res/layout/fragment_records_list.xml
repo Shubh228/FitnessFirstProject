@@ -10,46 +10,61 @@
             type="project.st991558097.shubh.viewModel.RecordsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize">
 
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/noListView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No records found!\nPlease add a record."
-            android:textColor="#FF0000"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recordsListRV"
+        <ScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setRecordList="@{recVM.recordLiveData}" />
+            android:layout_height="match_parent">
 
-        <Button
+            <RelativeLayout
+                android:id="@+id/parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recordsListRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="620dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:setRecordList="@{recVM.recordLiveData}" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/noListText"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:src="@drawable/nodata_img"
+                    android:layout_centerInParent="true"/>
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <ImageView
             android:id="@+id/goToAddRecord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="52dp"
-            android:background="@drawable/custom_button"
-            android:text="Add Record"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/scroll"
+            android:src="@drawable/add"
+            android:layout_margin="20dp" />
+
+    </RelativeLayout>
 
 </layout>

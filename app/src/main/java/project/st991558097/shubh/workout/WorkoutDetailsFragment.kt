@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.R
-import project.st991558097.shubh.data.WorkoutItem
 import project.st991558097.shubh.data.WorkoutRecordItem
 import project.st991558097.shubh.databinding.FragmentWorkoutDetailsBinding
 import project.st991558097.shubh.viewModel.RecordsViewModel
 import project.st991558097.shubh.workout.WorkoutActivity.Companion.ARG_IMG
 import project.st991558097.shubh.workout.WorkoutActivity.Companion.ARG_NAME
+import project.st991558097.shubh.workout.workoutAdapters.RecordsListAdapter
 import java.lang.ref.WeakReference
 
 class WorkoutDetailsFragment : Fragment(), RecordsListAdapter.RecordInterface {
@@ -58,7 +58,7 @@ class WorkoutDetailsFragment : Fragment(), RecordsListAdapter.RecordInterface {
             Navigation.findNavController(requireView()).navigate(R.id.action_workoutDetailsFragment_to_addRecordFragment)
         }
 
-        recordViewModel.fetchRecordList(workoutName, workoutImg)
+        recordViewModel.fetchRecentList(workoutName, workoutImg)
         recordViewModel.recordLiveData.observe(this.viewLifecycleOwner){
             recordItem -> recordsListAdapter.setRecords(recordItem)
             if (recordItem.isEmpty()){

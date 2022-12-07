@@ -18,4 +18,8 @@ class RecordsViewModel : ViewModel() {
     fun fetchRecordList(name: String, uri:String){
         recordsRepo.fetchRecordList(_recordLiveData, name, uri)
     }
+
+    fun fetchRecentList(name: String, uri: String){
+        recordsRepo.fetchRecentList(_recordLiveData,name, uri)
+    }
 }
