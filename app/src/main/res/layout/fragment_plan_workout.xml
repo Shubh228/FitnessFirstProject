@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".workout.PlanWorkoutFragment">
+    <data>
+        <variable
+            name="image"
+            type="String" />
+        <variable
+            name="name"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize">
+
+        <RelativeLayout
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
+
+        <RelativeLayout
+            android:id="@+id/workoutInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:layout_below="@+id/heading">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/workoutImg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:loadWithPicasso="@{image}"
+                    tools:src="@drawable/icon_cycling"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/workoutName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Cycling"
+                    android:text="@{name}"
+                    android:textStyle="bold|italic"
+                    android:textSize="36sp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/workoutImg"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/reminderInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/workoutInfo"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:id="@+id/reminderTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/timeHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminder Time"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="28sp" />
+
+                <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_below="@+id/timeHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:timePickerMode="spinner" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/reminderDay"
+                android:layout_below="@+id/reminderTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/remindDayHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repeat Weekdays"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="28sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/weekRCView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/remindDayHead"
+                    android:layout_marginTop="5dp"/>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/weekRCView"
+                    android:src="@drawable/icon_done"
+                    android:padding="5dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

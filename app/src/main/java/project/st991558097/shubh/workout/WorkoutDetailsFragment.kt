@@ -58,6 +58,10 @@ class WorkoutDetailsFragment : Fragment(), RecordsListAdapter.RecordInterface {
             Navigation.findNavController(requireView()).navigate(R.id.action_workoutDetailsFragment_to_addRecordFragment)
         }
 
+        binding.goToPlanWorkout.setOnClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.action_workoutDetailsFragment_to_planWorkoutFragment)
+        }
+
         recordViewModel.fetchRecentList(workoutName, workoutImg)
         recordViewModel.recordLiveData.observe(this.viewLifecycleOwner){
             recordItem -> recordsListAdapter.setRecords(recordItem)
