@@ -15,6 +15,10 @@ import project.st991558097.shubh.workout.WorkoutActivity.Companion.ARG_IMG
 import project.st991558097.shubh.workout.WorkoutActivity.Companion.ARG_NAME
 import project.st991558097.shubh.workout.WorkoutDetailsFragment
 
+/*
+Creator - Shubh Patel(991558097)
+RecordsRepository class helps us to fetch/get workout record from the firebase will display it to the user
+ */
 class RecordsRepository {
     private val user = Firebase.auth.currentUser
     private val email = user!!.email

@@ -20,6 +20,10 @@ import com.google.firebase.ktx.Firebase
 import project.st991558097.shubh.R
 import project.st991558097.shubh.data.UserInformation
 
+/*
+Creator - Shubh Patel(991558097)
+InfoFragment will collect the user information, type of workout user want to start with
+ */
 class InfoFragment : Fragment() {
 
     var activities = arrayOf("Beginner - 1 or 2 times a week.", "Intermediate - 3 to 4 times a week", "Expert - 5 to 6 times a week.")

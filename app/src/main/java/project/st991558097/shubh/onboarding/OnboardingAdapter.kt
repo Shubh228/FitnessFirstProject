@@ -15,7 +15,10 @@ import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import project.st991558097.shubh.R
 import project.st991558097.shubh.data.WorkoutItem
-
+/*
+Creator - Shubh Patel(991558097)
+OnboardingAdapter will allows user to add new workout record or can edit/delete the existing record
+ */
 class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Adapter<OnboardingAdapter.MyViewHolder>(){
 
 
