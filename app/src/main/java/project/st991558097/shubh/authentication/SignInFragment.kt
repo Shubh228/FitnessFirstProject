@@ -18,6 +18,12 @@ import com.google.firebase.ktx.Firebase
 import project.st991558097.shubh.R
 import project.st991558097.shubh.home.FFHomeActivity
 
+/*
+Creator - Shubh Patel(991558097)
+SignInFragment user will enter the email address and password will login to FitnessFirst
+and if user information is incorrect user will prompt with error message
+*/
+
 class SignInFragment : Fragment() {
 
     private lateinit var email: EditText

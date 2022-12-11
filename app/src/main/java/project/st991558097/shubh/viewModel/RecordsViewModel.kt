@@ -8,6 +8,10 @@ import project.st991558097.shubh.data.WorkoutRecordItem
 import project.st991558097.shubh.repository.RecordsRepository
 import project.st991558097.shubh.repository.WorkoutRepository
 
+/*
+Creator - Shubh Patel(991558097)
+RecordsViewModel class will helps us to bind the data and fetch record using the databinding and viewmodel
+ */
 class RecordsViewModel : ViewModel() {
 
     private val recordsRepo = RecordsRepository()

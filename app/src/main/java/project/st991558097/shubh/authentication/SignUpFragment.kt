@@ -20,6 +20,10 @@ import project.st991558097.shubh.R
 import project.st991558097.shubh.data.User
 import project.st991558097.shubh.onboarding.OnboardingActivity
 
+/*
+Creator - Shubh Patel(991558097)
+In SignUpFragment user can register him/her and can use our application
+ */
 class SignUpFragment : Fragment() {
 
     //private late-init variables

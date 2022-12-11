@@ -18,6 +18,10 @@ import project.st991558097.shubh.workout.WorkoutActivity
 import project.st991558097.shubh.workout.workoutAdapters.WorkoutListAdapter
 import java.lang.ref.WeakReference
 
+/*
+Creator - Shubh Patel(991558097)
+This is homepage activity for our application where we displays the list of different workout that we offer in our application
+ */
 class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {
 
     private val viewModel: WorkoutViewModel by lazy {
