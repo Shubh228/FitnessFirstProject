@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_workoutDetailsFragment_to_addRecordFragment"
             app:destination="@id/addRecordFragment" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_planWorkoutFragment"
+            app:destination="@id/planWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/recordsListFragment"
@@ -35,4 +38,9 @@
             android:id="@+id/action_addRecordFragment_to_recordsListFragment"
             app:destination="@id/recordsListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/planWorkoutFragment"
+        android:name="project.st991558097.shubh.workout.PlanWorkoutFragment"
+        android:label="fragment_plan_workout"
+        tools:layout="@layout/fragment_plan_workout" />
 </navigation>
