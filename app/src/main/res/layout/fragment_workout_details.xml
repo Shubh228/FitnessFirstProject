@@ -4,11 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".workout.WorkoutDetailsFragment">
 
-    <data>
-        <variable
-            name="recordsVM"
-            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
-    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -129,6 +124,11 @@
 
     </RelativeLayout>
 
+    <data>
+        <variable
+            name="recordsVM"
+            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
+    </data>
 
 
 </layout>
