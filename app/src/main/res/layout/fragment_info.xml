@@ -162,21 +162,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/activitySpinner"
-                android:layout_height="60dp"
-                android:layout_width="match_parent"
-                android:layout_below="@+id/inputGender"
-                android:layout_marginTop="20dp"
-                android:spinnerMode="dialog"
-                />
-
 
             <Button
                 android:id="@+id/nextPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/activitySpinner"
+                android:layout_below="@+id/inputGender"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:text="SAVE" />

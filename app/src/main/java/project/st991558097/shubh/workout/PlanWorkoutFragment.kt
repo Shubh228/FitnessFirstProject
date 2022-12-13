@@ -52,6 +52,9 @@ class PlanWorkoutFragment : Fragment() {
         binding.name = workoutName
         binding.image = workoutImg
 
+        binding.weekRCView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.weekRCView.adapter = DayListAdapter(days)
+
         createNotificationChannel()
 
         binding.timePicker.setOnClickListener {
