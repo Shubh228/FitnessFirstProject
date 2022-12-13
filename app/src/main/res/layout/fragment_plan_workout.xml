@@ -18,18 +18,12 @@
         android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="?actionBarSize">
 
-        <RelativeLayout
-            android:id="@+id/heading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"/>
 
         <RelativeLayout
             android:id="@+id/workoutInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:layout_below="@+id/heading">
+            android:paddingTop="5dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -41,22 +35,38 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:loadWithPicasso="@{image}"
-                    tools:src="@drawable/icon_cycling"/>
+                    tools:src="@drawable/icon_cycling" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/workoutName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Cycling"
-                    android:text="@{name}"
-                    android:textStyle="bold|italic"
-                    android:textSize="36sp"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="30dp"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/workoutImg"/>
+                    android:layout_marginStart="30dp"
+                    android:layout_toEndOf="@+id/workoutImg"
+                    android:text="@{name}"
+                    android:textColor="@color/black"
+                    android:textSize="36sp"
+                    android:textStyle="bold|italic"
+                    tools:text="Cycling" />
 
             </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pageInfo"
+            android:layout_below="@+id/workoutInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="24sp"
+                android:text="Please click on the icons below to select date and time for the reminder."/>
 
         </RelativeLayout>
 
@@ -64,66 +74,75 @@
             android:id="@+id/reminderInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/workoutInfo"
+            android:layout_below="@+id/pageInfo"
+            android:layout_marginTop="20dp"
             android:padding="10dp">
 
             <RelativeLayout
                 android:id="@+id/reminderTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp">
+                android:padding="5dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/timeHead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reminder Time"
+                    android:layout_centerVertical="true"
                     android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:textSize="28sp" />
 
-                <TimePicker
+                <ImageView
                     android:id="@+id/timePicker"
-                    android:layout_below="@+id/timeHead"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:timePickerMode="spinner" />
+                    android:src="@drawable/icon_time"
+                    android:layout_toRightOf="@+id/timeHead"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/reminderDay"
+                android:id="@+id/reminderDate"
                 android:layout_below="@+id/reminderTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp">
+                android:padding="5dp"
+                android:layout_marginTop="10dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/remindDayHead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Repeat Weekdays"
+                    android:text="Reminder Date"
                     android:textStyle="bold"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:textSize="28sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/weekRCView"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@id/remindDayHead"
-                    android:layout_marginTop="5dp"/>
-
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/weekRCView"
-                    android:src="@drawable/icon_done"
-                    android:padding="5dp"/>
+                    android:id="@+id/datePicker"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toRightOf="@+id/remindDayHead"
+                    android:src="@drawable/icon_plan" />
             </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/setReminder"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/reminderDate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icon_done" />
+
         </RelativeLayout>
     </RelativeLayout>
 </layout>

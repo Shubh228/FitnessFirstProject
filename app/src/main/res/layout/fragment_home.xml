@@ -2,27 +2,96 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homeRecyclerView"
+        <RelativeLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
-            app:setItems="@{viewModel.workoutLiveData}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-        />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi Shubh,\nWelcome back"
+                android:textColor="@color/blue"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/body"
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:id="@+id/rcContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/rcContentHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Categories"
+                        android:paddingLeft="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="24sp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homeRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rcContentHeading"
+                        android:layout_marginTop="30dp"
+                        app:setItems="@{viewModel.workoutLiveData}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rcContent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/caloriesContentHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dashboard"
+                        android:paddingLeft="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="24sp"/>
+
+                    <ImageView
+                        android:layout_below="@+id/caloriesContentHeading"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:src="@drawable/icon_food"/>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
 
     <data>
         <variable

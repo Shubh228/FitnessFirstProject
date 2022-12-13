@@ -8,19 +8,22 @@
 
     <androidx.cardview.widget.CardView
 
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_color">
 
         <RelativeLayout
             android:id="@+id/workoutCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="7dp">
 
             <RelativeLayout
                 android:id="@+id/imageRel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_rc"
+                >
 
                 <ImageView
                     android:id="@+id/workoutImg"
@@ -36,7 +39,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:id="@+id/NameRel"
                 android:layout_toRightOf="@+id/imageRel"
                 android:layout_width="match_parent"
@@ -54,7 +57,7 @@
                     tools:text="Workout name" />
 
             </RelativeLayout>
-
+-->
 
 
 

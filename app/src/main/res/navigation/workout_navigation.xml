@@ -42,5 +42,9 @@
         android:id="@+id/planWorkoutFragment"
         android:name="project.st991558097.shubh.workout.PlanWorkoutFragment"
         android:label="fragment_plan_workout"
-        tools:layout="@layout/fragment_plan_workout" />
+        tools:layout="@layout/fragment_plan_workout" >
+        <action
+            android:id="@+id/action_planWorkoutFragment_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+    </fragment>
 </navigation>

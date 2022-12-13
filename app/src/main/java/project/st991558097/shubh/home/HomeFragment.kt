@@ -40,7 +40,7 @@ class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {
 
         val workoutListAdapter = WorkoutListAdapter(WeakReference(this))
         view.findViewById<RecyclerView>(R.id.homeRecyclerView).adapter = workoutListAdapter
-        view.findViewById<RecyclerView>(R.id.homeRecyclerView).layoutManager = LinearLayoutManager(this.context)
+        view.findViewById<RecyclerView>(R.id.homeRecyclerView).layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
 
         viewModel.fetchWorkoutList()
