@@ -7,7 +7,7 @@
     android:background="@drawable/bg_color"
     tools:context=".onboarding.SelectionFragment">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,21 +20,27 @@
             android:textColor="@color/black"
             android:textSize="28dp"
             android:textStyle="bold"
-             />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ScrollView
             android:id="@+id/scrollV"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_below="@+id/materialTextView"
-            android:layout_marginTop="20dp">
+            android:layout_height="210dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+            app:layout_constraintVertical_bias="0.178">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/workoutRecView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </ScrollView>
 
         <Button
@@ -43,11 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
             android:text="Next"
-            android:layout_below="@+id/scrollV"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.499"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollV"
+            app:layout_constraintVertical_bias="1.0" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

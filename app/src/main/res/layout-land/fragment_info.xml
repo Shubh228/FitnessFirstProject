@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_color"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.SignUpFragment">
+    tools:context=".onboarding.InfoFragment"
+    android:background="@drawable/bg_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/logoView"
-            android:layout_width="170dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/logo_new"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/infoHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center|center_horizontal"
+            android:text="Lets get your fitness journey started!"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,19 +30,18 @@
             android:id="@+id/signUpRelative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="20dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="50dp"
-            app:layout_constraintTop_toBottomOf="@+id/logoView"
-            tools:layout_editor_absoluteY="269dp">
+            app:layout_constraintTop_toBottomOf="@+id/infoHeading">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputName"
+                android:id="@+id/inputAge"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="Age"
                 android:textColorHint="@android:color/black"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
@@ -50,27 +53,27 @@
                 app:endIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userName"
+                    android:id="@+id/userAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:imeOptions="actionDone"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputEmail"
+                android:id="@+id/inputHeight"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/inputName"
-                android:hint="Email"
-                android:paddingTop="15dp"
+                android:hint="Height"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/inputAge"
                 android:textColorHint="@android:color/black"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
@@ -82,27 +85,27 @@
                 app:endIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userEmail"
+                    android:id="@+id/userHeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:imeOptions="actionDone"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputPass"
+                android:id="@+id/inputWeight"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/inputEmail"
-                android:layout_marginTop="15dp"
-                android:hint="Password"
+                android:layout_below="@+id/inputHeight"
+                android:hint="Weight"
+                android:layout_marginTop="20dp"
                 android:textColorHint="@android:color/black"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
@@ -114,27 +117,27 @@
                 app:endIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userPassword"
+                    android:id="@+id/userWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:imeOptions="actionDone"
-                    android:inputType="textPassword"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputConfirmPass"
+                android:id="@+id/inputGender"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/inputPass"
-                android:layout_marginTop="15dp"
-                android:hint="Confirm Password"
+                android:layout_below="@+id/inputWeight"
+                android:hint="Gender"
+                android:layout_marginTop="20dp"
                 android:textColorHint="@android:color/black"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
@@ -146,40 +149,32 @@
                 app:endIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userConfirmPassword"
+                    android:id="@+id/userGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:imeOptions="actionDone"
-                    android:inputType="textPassword"
+                    android:inputType="textAutoComplete"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
-                android:id="@+id/goToLogin"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/nextPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/inputConfirmPass"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="30dp"
-                android:text="LogIn" />
+                android:layout_below="@+id/inputGender"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:text="SAVE" />
 
-            <Button
-                android:id="@+id/signUpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/inputConfirmPass"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="40dp"
-                android:layout_toLeftOf="@+id/goToLogin"
-                android:text="Register" />
+
         </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
