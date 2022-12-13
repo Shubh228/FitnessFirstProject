@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    android:layout_marginBottom="?actionBarSize"
+    tools:context=".workout.ReminderTryAgainFragment">
+
+    <ImageView
+        android:id="@+id/thumpsUpImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/thumbsdown"
+        android:layout_marginTop="70dp"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/confirmedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try Again!"
+        android:textSize="40dp"
+        android:layout_below="@+id/thumpsUpImg"
+        android:textColor="@color/black"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmedText"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:text="Sorry for the inconveience!" />
+
+    <Button
+        android:id="@+id/goToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmedText"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="75dp"
+        android:text="Back Home" />
+
+</RelativeLayout>

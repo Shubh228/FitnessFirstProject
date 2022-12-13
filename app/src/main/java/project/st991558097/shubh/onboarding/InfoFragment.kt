@@ -51,7 +51,7 @@ class InfoFragment : Fragment() {
         weight = view.findViewById(R.id.userWeight)
         gender = view.findViewById(R.id.userGender)
         saveBtn = view.findViewById(R.id.nextPage)
-        frequencySpinner = view.findViewById(R.id.activitySpinner)
+//        frequencySpinner = view.findViewById(R.id.activitySpinner)
         dbReference = Firebase.database.reference
         currentUser = Firebase.auth.currentUser!!
         currentUser.let {

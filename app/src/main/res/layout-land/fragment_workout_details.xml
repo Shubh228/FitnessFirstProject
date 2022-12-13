@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".workout.WorkoutDetailsFragment">
+
+    <data>
+        <variable
+            name="recordsVM"
+            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/workoutImg"
+                android:layout_marginTop="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                tools:src="@drawable/icon_cycling"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/workoutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Cycling"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:textSize="34dp"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/workoutImg"/>
+
+            <RelativeLayout
+                android:id="@+id/labels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/workoutName">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/recordsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Records"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:padding="10dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/showRecords"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="12dp"
+                    android:text="Show all"
+                    android:textColor="#0321C8"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header">
+
+            <RelativeLayout
+                android:id="@+id/parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recordsRCView"
+                        android:layout_width="match_parent"
+                        app:setRecords="@{recordsVM.recordLiveData}"
+                        android:layout_height="400dp"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/noListText"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/nodata_img"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/goToAddRecord"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/scroll"
+            android:src="@drawable/add"
+            android:layout_margin="20dp" />
+
+        <ImageView
+            android:id="@+id/goToPlanWorkout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@id/scroll"
+            android:layout_margin="20dp"
+            android:src="@drawable/icon_notify"/>
+
+    </ScrollView>
+
+
+
+</layout>
