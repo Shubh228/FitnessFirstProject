@@ -1,9 +1,8 @@
-package project.st991558097.shubh.home
+package project.st991558097.shubh.diet
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
@@ -18,76 +17,40 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import project.st991558097.shubh.MainActivity
 import project.st991558097.shubh.R
-import project.st991558097.shubh.data.Diet
-import project.st991558097.shubh.diet.DietActivity
-import project.st991558097.shubh.repository.DietRepository
+import project.st991558097.shubh.data.WorkoutRecordItem
 
-/*
-This is calorie tracker activity for our application
- */
-class FFHomeActivity : AppCompatActivity() {
+class DietActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-    var targetCalories:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ff_home)
+        setContentView(R.layout.activity_diet)
 
-        getTargetCalories()
-
-        val user = Firebase.auth.currentUser
-        val email = user!!.email
-        val username = email?.split("@")?.get(0).toString()
-
-
-        GlobalScope.launch {
-            Firebase.database.getReference("Users").child(username).addValueEventListener(object :
-                ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val data = snapshot.child("Information")
-                    targetCalories = data.child("targetCalories").value.toString()
-                    Log.d("targetin", targetCalories)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
-            delay(900)
-            Log.d("inside global", targetCalories)
-
-        }
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        val navView = findViewById<NavigationView>(R.id.ff_nav_view)
-        val bottomView = findViewById<BottomNavigationView>(R.id.ff_bottom_navigation)
+        val navView = findViewById<NavigationView>(R.id.diet_nav_view)
+        val bottomView = findViewById<BottomNavigationView>(R.id.diet_bottom_navigation)
         val head = findViewById<TextView>(R.id.pageTitle)
-        val navController = this.findNavController(R.id.homeNavHost)
+        val navController = this.findNavController(R.id.dietNavHost)
 
         val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
             head.text = destination.label
         }
 
-
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }
 
-    private fun getTargetCalories() {
-
-    }
-
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.homeNavHost)
+        val navController = findNavController(R.id.dietNavHost)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
