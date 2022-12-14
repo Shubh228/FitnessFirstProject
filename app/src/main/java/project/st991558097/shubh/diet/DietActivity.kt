@@ -27,7 +27,10 @@ import project.st991558097.shubh.data.WorkoutRecordItem
 
 class DietActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    companion object{
+        const val ARG_TARGET = "_target"
+        //val editRecord: WorkoutRecordItem = WorkoutRecordItem()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet)

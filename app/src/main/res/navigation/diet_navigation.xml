@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/diet_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diet_navigation"
+    app:startDestination="@id/dietDisplayFragment">
 
+    <fragment
+        android:id="@+id/dietDisplayFragment"
+        android:name="project.st991558097.shubh.diet.DietDisplayFragment"
+        android:label="fragment_diet_display"
+        tools:layout="@layout/fragment_diet_display" />
 </navigation>

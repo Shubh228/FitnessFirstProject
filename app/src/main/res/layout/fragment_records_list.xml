@@ -5,9 +5,9 @@
     tools:context=".workout.RecordsListFragment">
 
     <data>
-        <variable
-            name="recVM"
-            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
+        <!--<variable
+            name="dietVM"
+            type="project.st991558097.shubh.viewModel.DietViewModel" />-->
     </data>
 
     <RelativeLayout
@@ -39,8 +39,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:setRecordList="@{recVM.recordLiveData}" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </RelativeLayout>
 
