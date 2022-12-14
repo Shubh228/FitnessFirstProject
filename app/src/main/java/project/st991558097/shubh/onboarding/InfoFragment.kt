@@ -26,13 +26,12 @@ InfoFragment will collect the user information, type of workout user want to sta
  */
 class InfoFragment : Fragment() {
 
-    var activities = arrayOf("Beginner - 1 or 2 times a week.", "Intermediate - 3 to 4 times a week", "Expert - 5 to 6 times a week.")
     private lateinit var userName:String
     private lateinit var age:EditText
     private lateinit var height:EditText
     private lateinit var weight:EditText
     private lateinit var gender:EditText
-    private lateinit var frequencySpinner: Spinner
+    private lateinit var calories:EditText
     private lateinit var saveBtn: Button
     private lateinit var database:FirebaseDatabase
     private lateinit var dbReference: DatabaseReference
@@ -50,6 +49,7 @@ class InfoFragment : Fragment() {
         height = view.findViewById(R.id.userHeight)
         weight = view.findViewById(R.id.userWeight)
         gender = view.findViewById(R.id.userGender)
+        calories = view.findViewById(R.id.userTarget)
         saveBtn = view.findViewById(R.id.nextPage)
 //        frequencySpinner = view.findViewById(R.id.activitySpinner)
         dbReference = Firebase.database.reference
@@ -81,16 +81,19 @@ class InfoFragment : Fragment() {
             TextUtils.isEmpty(gender.text.toString().trim()) -> {
                 gender.error = "Please enter your Gender"
             }
+            TextUtils.isEmpty(calories.text.toString().trim()) -> {
+                calories.error = "Please enter your Target Calories"
+            }
 
             age.text.toString().isNotEmpty() && height.text.toString().isNotEmpty()
-                    && weight.text.toString().isNotEmpty() && gender.text.toString().isNotEmpty() ->{
+                    && weight.text.toString().isNotEmpty() && gender.text.toString().isNotEmpty() && calories.text.toString().isNotEmpty() ->{
                         saveDetails()
                     }
         }
     }
 
     private fun saveDetails() {
-        val userInfo = UserInformation(age.text.toString(), height.text.toString(), weight.text.toString(), gender.text.toString(), "NA")
+        val userInfo = UserInformation(age.text.toString(), height.text.toString(), weight.text.toString(), gender.text.toString(), calories.text.toString())
         dbReference.child("Users").child(userName).child("Information").setValue(userInfo)
         Toast.makeText(context, "Information saved successfully.", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(requireView()).navigate(R.id.action_infoFragment_to_selectionFragment)
