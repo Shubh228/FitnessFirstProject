@@ -19,21 +19,28 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import project.st991558097.shubh.R
+import project.st991558097.shubh.data.Reminder
 import project.st991558097.shubh.databinding.FragmentPlanWorkoutBinding
 import project.st991558097.shubh.workout.notifications.*
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.min
 
 
 class PlanWorkoutFragment : Fragment() {
 
+    //private var days:List<String> = listOf("Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat")
     private var _binding: FragmentPlanWorkoutBinding? = null
     private val binding get() = _binding!!
     private lateinit var workoutName:String
     private lateinit var workoutImg:String
+    private  var reminderDate:String = ""
+    private lateinit var userName:String
+    private lateinit var database: DatabaseReference
     private var minute:Int = 0
     private var hour:Int = 0
     private var date:Int = 0
@@ -45,28 +52,40 @@ class PlanWorkoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+        val user = Firebase.auth.currentUser!!
+        val email = user!!.email
+        userName = email?.split("@")?.get(0).toString()
+
         _binding = FragmentPlanWorkoutBinding.inflate(inflater, container, false)
         workoutName = activity?.intent?.getStringExtra(WorkoutActivity.ARG_NAME).toString()
         workoutImg = activity?.intent?.getStringExtra(WorkoutActivity.ARG_IMG).toString()
+        database = Firebase.database.reference
 
         binding.name = workoutName
         binding.image = workoutImg
 
-        binding.weekRCView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.weekRCView.adapter = DayListAdapter(days)
-
+       /* binding.weekRCView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.weekRCView!!.adapter = DayListAdapter(days)
+*/
         createNotificationChannel()
 
         binding.timePicker.setOnClickListener {
             selectTime()
         }
 
-        binding.datePicker.setOnClickListener {
+        binding.datePicker?.setOnClickListener {
             selectDate()
         }
 
-        binding.setReminder.setOnClickListener {
-            scheduleNotification()
+        binding.setReminder?.setOnClickListener {
+            if (reminderDate!= "" && minute != 0 && hour != 0){
+                writeToDB(reminderDate, minute, hour)
+                scheduleNotification()
+                //Navigation.findNavController(requireView()).navigate()
+            }else{
+                Toast.makeText(context, "Please Select date and time.", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
@@ -86,6 +105,7 @@ class PlanWorkoutFragment : Fragment() {
         datePicker.addOnPositiveButtonClickListener {
             val dateFormatter = SimpleDateFormat("dd/MM/yyyy")
             val selectedDate = dateFormatter.format(Date(it))
+            reminderDate = selectedDate
             date = Integer.parseInt(selectedDate.split("/")[0])
             month = Integer.parseInt(selectedDate.split("/")[1])
             year = Integer.parseInt(selectedDate.split("/")[2])
@@ -179,5 +199,14 @@ class PlanWorkoutFragment : Fragment() {
         calendar.set(year,month, date, hour, minute)
 
         return calendar.timeInMillis
+    }
+
+    private fun writeToDB(reminderDate: String, minute: Int, hour: Int) {
+        val reminderItem = Reminder(workoutName, workoutImg, "$hour:$minute", reminderDate)
+        database.child("Users").child(userName).child("Reminders").push().setValue(reminderItem).addOnSuccessListener {
+            Toast.makeText(context, "Reminder added successfully.", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 }

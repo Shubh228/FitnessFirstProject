@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import project.st991558097.shubh.R
 
-class ReminderConfirmationFragment : Fragment() {
+
+class ReminderFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reminder_confirmation, container, false)
+        return inflater.inflate(R.layout.fragment_reminder, container, false)
     }
+
 }

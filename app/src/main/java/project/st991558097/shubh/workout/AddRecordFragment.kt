@@ -49,7 +49,6 @@ class AddRecordFragment : Fragment() {
         displayItems()
 
         if (arguments?.getBoolean("edit") == true){
-            Log.d("meh", "I am here")
             populateFields()
         }
 
@@ -116,7 +115,6 @@ class AddRecordFragment : Fragment() {
     }
 
     private fun populateFields() {
-        Log.d("inside pop", editRecord.id)
         binding.date = editRecord.date
         binding.startTime = editRecord.startTime
         binding.endTime = editRecord.endTime

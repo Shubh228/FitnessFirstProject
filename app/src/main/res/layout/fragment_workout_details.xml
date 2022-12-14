@@ -5,6 +5,12 @@
     tools:context=".workout.WorkoutDetailsFragment">
 
 
+
+    <data>
+        <variable
+            name="recordsVM"
+            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
+    </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -123,12 +129,6 @@
             android:src="@drawable/icon_notify"/>
 
     </RelativeLayout>
-
-    <data>
-        <variable
-            name="recordsVM"
-            type="project.st991558097.shubh.viewModel.RecordsViewModel" />
-    </data>
 
 
 </layout>

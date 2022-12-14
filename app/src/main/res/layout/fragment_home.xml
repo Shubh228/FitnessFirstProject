@@ -63,7 +63,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rcContent">
+                    android:layout_below="@+id/rcContent"
+                    android:layout_marginTop="30dp">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/caloriesContentHeading"
@@ -75,12 +76,12 @@
                         android:textStyle="bold"
                         android:textSize="24sp"/>
 
-                    <ImageView
+                   <!-- <ImageView
                         android:layout_below="@+id/caloriesContentHeading"
                         android:layout_width="250dp"
                         android:layout_height="250dp"
-                        android:src="@drawable/icon_food"/>
-
+                        android:src=""/>
+-->
 
                 </RelativeLayout>
 
