@@ -28,7 +28,7 @@ class RecordsListFragment : Fragment(), RecordsListAdapter.RecordInterface {
     private val binding get() = _binding!!
     private lateinit var workoutName:String
     private lateinit var workoutImg:String
-    //private val deleteColor = ContextCompat.getColor()
+//    private val deleteColor = ContextCompat.getColor()
     private val editColor = R.color.yellow
     private val deleteImage = R.drawable.icon_trash
     private val editImage = R.drawable.icon_edit

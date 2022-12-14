@@ -46,9 +46,20 @@
         <action
             android:id="@+id/action_planWorkoutFragment_to_workoutDetailsFragment"
             app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_planWorkoutFragment_to_reminderFragment"
+            app:destination="@id/reminderFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="project.st991558097.shubh.home.HomeFragment"
         android:label="Home" />
+    <fragment
+        android:id="@+id/reminderFragment"
+        android:name="project.st991558097.shubh.workout.ReminderFragment"
+        android:label="Upcoming Workouts">
+        <action
+            android:id="@+id/action_reminderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

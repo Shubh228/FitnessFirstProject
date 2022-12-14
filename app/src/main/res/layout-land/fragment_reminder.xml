@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".workout.RecordsListFragment">
+
+    <data>
+        <variable
+            name="recVM"
+            type="project.st991558097.shubh.viewModel.ReminderViewModel" />
+    </data>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            android:layout_marginBottom="?actionBarSize">
+
+
+
+                <RelativeLayout
+                    android:id="@+id/parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:id="@+id/recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/reminderListRV"
+                            android:layout_width="match_parent"
+                            android:layout_height="620dp"
+                            android:layout_centerInParent="true"
+                            app:setReminderList="@{recVM.reminderLiveData}" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/noListText"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/nodata_img"
+                        android:layout_centerInParent="true"/>
+
+                    <Button
+                        android:id="@+id/goToHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_button"
+                        android:text="home"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"/>
+
+                </RelativeLayout>
+
+
+        </ScrollView>
+</layout>

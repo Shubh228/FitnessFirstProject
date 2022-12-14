@@ -82,7 +82,7 @@ class PlanWorkoutFragment : Fragment() {
             if (reminderDate!= "" && minute != 0 && hour != 0){
                 writeToDB(reminderDate, minute, hour)
                 scheduleNotification()
-                //Navigation.findNavController(requireView()).navigate()
+                Navigation.findNavController(requireView()).navigate(R.id.action_planWorkoutFragment_to_reminderFragment)
             }else{
                 Toast.makeText(context, "Please Select date and time.", Toast.LENGTH_SHORT).show()
             }
@@ -202,7 +202,7 @@ class PlanWorkoutFragment : Fragment() {
     }
 
     private fun writeToDB(reminderDate: String, minute: Int, hour: Int) {
-        val reminderItem = Reminder(workoutName, workoutImg, "$hour:$minute", reminderDate)
+        val reminderItem = Reminder("", workoutName, workoutImg, "$hour:$minute", reminderDate)
         database.child("Users").child(userName).child("Reminders").push().setValue(reminderItem).addOnSuccessListener {
             Toast.makeText(context, "Reminder added successfully.", Toast.LENGTH_SHORT).show()
         }

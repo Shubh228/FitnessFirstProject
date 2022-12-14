@@ -9,7 +9,8 @@
         />
 
     <item
-        android:title="Workout"
+        android:id="@+id/reminderFragment"
+        android:title="Workouts"
         android:icon="@drawable/fitness"
         />
 

@@ -10,4 +10,8 @@
         android:name="project.st991558097.shubh.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/reminderFragment"
+        android:name="project.st991558097.shubh.workout.ReminderFragment"
+        android:label="Upcoming Workouts" />
 </navigation>

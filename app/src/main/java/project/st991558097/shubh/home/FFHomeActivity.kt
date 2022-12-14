@@ -39,7 +39,7 @@ class FFHomeActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }
