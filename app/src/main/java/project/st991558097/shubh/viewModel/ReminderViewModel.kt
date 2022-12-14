@@ -1,4 +1,24 @@
 package project.st991558097.shubh.viewModel
 
-class ReminderViewModel {
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import project.st991558097.shubh.data.Reminder
+import project.st991558097.shubh.data.WorkoutItem
+import project.st991558097.shubh.repository.RemindersRepository
+import project.st991558097.shubh.repository.WorkoutRepository
+
+/*
+Creator - Purv Patel(991558098)
+ReminderViewModel class will helps us to bind the data and fetch workout plan using the databinding and viewmodel
+ */
+class ReminderViewModel: ViewModel() {
+    private val reminderRepo = RemindersRepository()
+
+    private val _reminderLiveData= MutableLiveData<List<Reminder>>()
+    val reminderLiveData: LiveData<List<Reminder>> = _reminderLiveData
+
+    fun fetchReminderList(){
+        reminderRepo.fetchReminderList(_reminderLiveData)
+    }
 }
