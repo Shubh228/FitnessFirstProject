@@ -1,5 +1,6 @@
-package project.st991558097.shubh.workout
+package project.st991558097.shubh.diet
 
+import android.app.AlertDialog
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,41 +15,34 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import project.st991558097.shubh.R
-import project.st991558097.shubh.data.Reminder
-import project.st991558097.shubh.databinding.FragmentReminderBinding
-import project.st991558097.shubh.viewModel.ReminderViewModel
-import project.st991558097.shubh.workout.workoutAdapters.RecordsListAdapter
-import project.st991558097.shubh.workout.workoutAdapters.ReminderListAdapter
-import java.lang.ref.WeakReference
-/*
-Creator - Purv Patel(991558098)
-ReminderFragement class will display the data to the user using live data and view model
- */
+import project.st991558097.shubh.databinding.FragmentDietDisplayBinding
+import project.st991558097.shubh.diet.dietAdapters.MealListAdapter
+import project.st991558097.shubh.viewModel.DietViewModel
 
-class ReminderFragment : Fragment() {
-    private var _binding: FragmentReminderBinding? = null
+class DietDisplayFragment : Fragment() {
+
+    private var _binding: FragmentDietDisplayBinding? = null
     private val binding get() = _binding!!
-    private val deleteImage = R.drawable.icon_trash
 
-    private val reminderViewModel : ReminderViewModel by lazy {
-        ViewModelProvider(requireActivity())[ReminderViewModel::class.java]
+    private val dietViewModel:DietViewModel by lazy {
+        ViewModelProvider(requireActivity())[DietViewModel::class.java]
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentReminderBinding.inflate(inflater, container, false)
+        _binding = FragmentDietDisplayBinding.inflate(inflater, container, false)
 
         binding.noListText.visibility = View.GONE
-        val reminderListAdapter = ReminderListAdapter()
-        binding.reminderListRV.adapter = reminderListAdapter
-        binding.reminderListRV.layoutManager = LinearLayoutManager(this.context)
+        val mealListAdapter = MealListAdapter()
+        binding.dietListRV.adapter = mealListAdapter
+        binding.dietListRV.layoutManager = LinearLayoutManager(this.context)
 
-        binding.goToHome.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.action_reminderFragment_to_homeFragment)
+        binding.goToAddMeal.setOnClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.action_dietDisplayFragment_to_addMealFragment)
         }
-
         val touch = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -61,7 +55,25 @@ class ReminderFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.RIGHT -> {
-                        reminderListAdapter.deleteItem(viewHolder.adapterPosition)
+                        val builder = AlertDialog.Builder(context)
+                        builder.setMessage("Are you sure you want to Delete?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes") { dialog, id ->
+                                mealListAdapter.deleteItem(viewHolder.adapterPosition)
+                            }
+                            .setNegativeButton("No") { dialog, id ->
+
+                                dialog.dismiss()
+                            }
+                        val alert = builder.create()
+                        alert.show()
+                    }
+
+                    ItemTouchHelper.LEFT -> {
+                        mealListAdapter.setItem(viewHolder.adapterPosition)
+                        val bundle = Bundle()
+                        bundle.putBoolean("edit", true)
+                        Navigation.findNavController(requireView()).navigate(R.id.action_dietDisplayFragment_to_addMealFragment, bundle)
                     }
                 }
             }
@@ -77,6 +89,8 @@ class ReminderFragment : Fragment() {
             ) {
 
                 RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.yellow))
+                    .addSwipeLeftActionIcon(R.drawable.icon_edit)
                     .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.red))
                     .addSwipeRightActionIcon(R.drawable.icon_trash)
                     .create()
@@ -94,19 +108,22 @@ class ReminderFragment : Fragment() {
             }
         })
 
-        touch.attachToRecyclerView(binding.reminderListRV)
+        touch.attachToRecyclerView(binding.dietListRV)
 
-        reminderViewModel.fetchReminderList()
-        reminderViewModel.reminderLiveData.observe(this.viewLifecycleOwner){
-                reminderItem -> reminderListAdapter.setReminder(reminderItem)
-            if (reminderItem.isEmpty()){
-                binding.reminderListRV.visibility = View.GONE
+        dietViewModel.fetchMealList()
+        dietViewModel.dietLiveData.observe((this.viewLifecycleOwner)){
+            it -> mealListAdapter.setMeal(it)
+            if (it.isEmpty()){
+                binding.dietListRV.visibility = View.GONE
                 binding.noListText.visibility = View.VISIBLE
             }else{
-                binding.reminderListRV.visibility = View.VISIBLE
+                binding.dietListRV.visibility = View.VISIBLE
                 binding.noListText.visibility = View.GONE
             }
+
         }
+
+
         return binding.root
     }
 

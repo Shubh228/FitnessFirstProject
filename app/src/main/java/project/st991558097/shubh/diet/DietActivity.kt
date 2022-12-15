@@ -23,11 +23,15 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import project.st991558097.shubh.MainActivity
 import project.st991558097.shubh.R
+import project.st991558097.shubh.data.MealItem
 import project.st991558097.shubh.data.WorkoutRecordItem
 
 class DietActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    companion object{
+        const val ARG_TARGET = "_target"
+        val editMeal: MealItem = MealItem()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet)
@@ -44,7 +48,7 @@ class DietActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment, R.id.addMealFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }

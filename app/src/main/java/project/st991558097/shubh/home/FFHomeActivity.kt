@@ -35,35 +35,12 @@ This is calorie tracker activity for our application
  */
 class FFHomeActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-    var targetCalories:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ff_home)
 
-        getTargetCalories()
 
-        val user = Firebase.auth.currentUser
-        val email = user!!.email
-        val username = email?.split("@")?.get(0).toString()
-
-
-        GlobalScope.launch {
-            Firebase.database.getReference("Users").child(username).addValueEventListener(object :
-                ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val data = snapshot.child("Information")
-                    targetCalories = data.child("targetCalories").value.toString()
-                    Log.d("targetin", targetCalories)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
-            delay(900)
-            Log.d("inside global", targetCalories)
-
-        }
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val navView = findViewById<NavigationView>(R.id.ff_nav_view)
@@ -77,14 +54,11 @@ class FFHomeActivity : AppCompatActivity() {
 
 
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment, R.id.addMealFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }
 
-    private fun getTargetCalories() {
-
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.homeNavHost)

@@ -15,6 +15,7 @@
         />
 
     <item
+        android:id="@+id/addMealFragment"
         android:icon="@drawable/diet"
         android:title="Diet"
         />

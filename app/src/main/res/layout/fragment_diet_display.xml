@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".workout.RecordsListFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".diet.DietDisplayFragment">
 
     <data>
         <variable
             name="recVM"
-            type="project.st991558097.shubh.viewModel.ReminderViewModel" />
+            type="project.st991558097.shubh.viewModel.DietViewModel" />
     </data>
 
     <RelativeLayout
@@ -16,8 +16,18 @@
         android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="?actionBarSize">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's meals"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+
         <ScrollView
             android:id="@+id/scroll"
+            android:layout_below="@+id/heading"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -33,11 +43,11 @@
                     android:layout_height="match_parent">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/reminderListRV"
+                        android:id="@+id/dietListRV"
                         android:layout_width="match_parent"
                         android:layout_height="620dp"
-                        android:layout_centerInParent="true"
-                        app:setReminderList="@{recVM.reminderLiveData}" />
+                        app:setMealList="@{recVM.dietLiveData}"
+                        />
 
                 </RelativeLayout>
 
@@ -53,16 +63,16 @@
 
         </ScrollView>
 
-        <Button
-            android:visibility="gone"
-            android:id="@+id/goToHome"
+        <ImageView
+            android:id="@+id/goToAddMeal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:text="home"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/scroll"
+            android:src="@drawable/icon_recmeal"
+            android:layout_margin="20dp" />
 
     </RelativeLayout>
+
 
 </layout>

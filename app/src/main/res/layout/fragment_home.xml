@@ -3,6 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="project.st991558097.shubh.viewModel.HomeViewModel" />
+        <variable
+            name="greeting"
+            type="String" />
+        <variable
+            name="completed"
+            type="String" />
+        <variable
+            name="target"
+            type="String" />
+    </data>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,9 +32,11 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hi Shubh,\nWelcome back"
+                android:text="@{greeting}"
+                tools:text="Hi Shubh\nWelcome back"
                 android:textColor="@color/blue"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -61,6 +81,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/dash"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rcContent"
@@ -76,12 +97,138 @@
                         android:textStyle="bold"
                         android:textSize="24sp"/>
 
-                   <!-- <ImageView
-                        android:layout_below="@+id/caloriesContentHeading"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
-                        android:src=""/>
--->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/viewMealRecords"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show History"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_alignParentEnd="true"
+                        android:paddingRight="12dp"
+                        android:layout_marginTop="4dp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/dateHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today"
+                        android:layout_below="@id/caloriesContentHeading"
+                        android:layout_marginStart="12dp"
+                        android:textSize="22sp"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/dateHeading"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="45dp"
+                        android:layout_marginBottom="20dp"
+                        android:padding="20dp">
+
+                        <RelativeLayout
+                            android:id="@+id/leftContent"
+                            android:padding="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/consumed"
+                                android:layout_width="85dp"
+                                android:layout_height="wrap_content"
+                                android:text="@{completed}"
+                                android:textColor="@color/black"
+                                android:textSize="32sp"
+                                android:textStyle="italic|bold"
+                                tools:text="1200" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/content"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/consumed"
+                                android:layout_alignRight="@id/consumed"
+                                android:gravity="end"
+                                android:text="out of"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/goal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/content"
+                                android:layout_marginStart="40dp"
+                                android:text="@{target}"
+                                android:textColor="@color/black"
+                                android:textSize="32sp"
+                                android:textStyle="italic|bold"
+                                tools:text="2500" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="40dp"
+                            android:layout_toRightOf="@+id/leftContent">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/mealHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meal count:"
+                                android:textColor="@color/black"
+                                android:textSize="28sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/mealCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/mealHeading"
+                                android:layout_centerHorizontal="true"
+                                android:text="4"
+                                android:textColor="@color/black"
+                                android:textSize="38sp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/dash"
+                    android:id="@+id/featuredContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/webHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check out the website below for free workouts."
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:padding="10dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/web"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_below="@+id/webHead"
+                        android:src="@drawable/web"/>
+
+
+
+
 
                 </RelativeLayout>
 
@@ -93,10 +240,4 @@
 
     </RelativeLayout>
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="project.st991558097.shubh.viewModel.WorkoutViewModel" />
-    </data>
 </layout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:cardBackgroundColor="#DAC6CD"
+        app:cardCornerRadius="25dp"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mealType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="38sp"
+                    tools:text="Breakfast"
+                    android:textStyle="bold"
+                    android:text="@{type}"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mealType"
+                    tools:text="Food item"
+                    android:text="@{itemName}"
+                    android:layout_marginStart="10dp"
+                    android:textSize="28sp"
+                    android:textColor="@color/black"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mealType"
+                    android:layout_toRightOf="@id/item"
+                    tools:text="450 calories"
+                    android:text="@{cals}"
+                    android:layout_marginStart="25dp"
+                    android:textSize="28sp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <data>
+        <variable
+            name="type"
+            type="String" />
+        <variable
+            name="itemName"
+            type="String" />
+        <variable
+            name="cals"
+            type="String" />
+    </data>
+</layout>
