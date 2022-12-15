@@ -93,6 +93,7 @@ class PlanWorkoutFragment : Fragment() {
         return binding.root
     }
 
+    //It will allow the user to select the date from the calender view
     private fun selectDate() {
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
@@ -115,6 +116,7 @@ class PlanWorkoutFragment : Fragment() {
         }
     }
 
+    //will allow the user to select the time from the team picker
     private fun selectTime() {
         val picker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_12H)

@@ -13,11 +13,8 @@ class WorkoutViewModel : ViewModel() {
     private val _workoutLiveData= MutableLiveData<List<WorkoutItem>>()
     val workoutLiveData:LiveData<List<WorkoutItem>> = _workoutLiveData
 
+    //This method will display the workout record using the WorkoutRepository
     fun fetchWorkoutList(){
         workoutRepo.fetchWorkoutList(_workoutLiveData)
     }
-
-    //private val _name = MutableLiveData<String>("")
-
-
 }

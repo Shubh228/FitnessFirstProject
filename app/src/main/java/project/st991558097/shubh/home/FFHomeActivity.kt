@@ -44,11 +44,13 @@ class FFHomeActivity : AppCompatActivity() {
         bottomView.setupWithNavController(navController)
     }
 
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.homeNavHost)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    //Using the menu item user can logout from the application
     fun logoutOnClick(item: MenuItem){
         Firebase.auth.signOut()
 

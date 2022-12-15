@@ -21,6 +21,7 @@ class RemindersRepository {
     private val database= Firebase.database
     private val dbRef = database.getReference("Users").child(username).child("Reminders")
 
+    //Below method will display the reminder list to the user for upcoming workouts
     fun fetchReminderList(liveData: MutableLiveData<List<Reminder>>){
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

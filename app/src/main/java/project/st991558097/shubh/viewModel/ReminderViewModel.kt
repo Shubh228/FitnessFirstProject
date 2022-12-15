@@ -18,6 +18,7 @@ class ReminderViewModel: ViewModel() {
     private val _reminderLiveData= MutableLiveData<List<Reminder>>()
     val reminderLiveData: LiveData<List<Reminder>> = _reminderLiveData
 
+    //This method will display the reminders that user has set using the ReminderRepository
     fun fetchReminderList(){
         reminderRepo.fetchReminderList(_reminderLiveData)
     }

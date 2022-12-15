@@ -66,6 +66,7 @@ class SignUpFragment : Fragment() {
         return view
     }
 
+    //validating the user credentials while user sign up for the account
     private fun validateCreds() {
         when{
             TextUtils.isEmpty(name.text.toString().trim()) -> {
@@ -99,6 +100,7 @@ class SignUpFragment : Fragment() {
         }
     }
 
+    //Using the firebase authentication we are adding the user email id and password into our firebase database
     private fun signUp() {
         auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener {

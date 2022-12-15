@@ -63,12 +63,6 @@ class RecordsListAdapter(private val callbackWeakReference: WeakReference<Record
 
     }
 
-  /*  @SuppressLint("NotifyDataSetChanged")
-    fun delRecord(recordItem:WorkoutRecordItem){
-        this.recordItems.clear()
-        this.recordItems.addAll(recordItems?: emptyList())
-        notifyDataSetChanged()
-    }*/
 
     @SuppressLint("NotifyDataSetChanged")
     fun setRecords(recordItems:List<WorkoutRecordItem>?){
