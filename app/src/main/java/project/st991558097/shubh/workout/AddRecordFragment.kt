@@ -56,7 +56,6 @@ class AddRecordFragment : Fragment() {
         val email = user!!.email
         userName = email?.split("@")?.get(0).toString()
         database = Firebase.database.reference
-        dateText = "Today"
 
         binding.iconCalendar.setOnClickListener {
             selectDate()

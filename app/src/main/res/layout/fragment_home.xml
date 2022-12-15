@@ -81,6 +81,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/dash"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rcContent"
@@ -128,8 +129,7 @@
 
                         <RelativeLayout
                             android:id="@+id/leftContent"
-                            android:background="#7ABFEA"
-                            android:padding="10dp"
+                            android:padding="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -200,14 +200,35 @@
 
                     </RelativeLayout>
 
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/dash"
+                    android:id="@+id/featuredContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/webHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check out the website below for free workouts."
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:padding="10dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/web"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_below="@+id/webHead"
+                        android:src="@drawable/web"/>
 
 
-                   <!-- <ImageView
-                        android:layout_below="@+id/caloriesContentHeading"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
-                        android:src=""/>
--->
+
+
 
                 </RelativeLayout>
 

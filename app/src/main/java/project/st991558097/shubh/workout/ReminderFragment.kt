@@ -77,8 +77,6 @@ class ReminderFragment : Fragment() {
             ) {
 
                 RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(context!!, R.color.yellow))
-                    .addSwipeLeftActionIcon(R.drawable.icon_edit)
                     .addSwipeRightBackgroundColor(ContextCompat.getColor(context!!, R.color.red))
                     .addSwipeRightActionIcon(R.drawable.icon_trash)
                     .create()

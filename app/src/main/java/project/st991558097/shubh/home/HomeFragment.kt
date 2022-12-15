@@ -19,6 +19,7 @@ import project.st991558097.shubh.databinding.FragmentHomeBinding
 import project.st991558097.shubh.diet.DietActivity
 import project.st991558097.shubh.viewModel.HomeViewModel
 import project.st991558097.shubh.viewModel.WorkoutViewModel
+import project.st991558097.shubh.web.WebActivity
 import project.st991558097.shubh.workout.WorkoutActivity
 import project.st991558097.shubh.workout.workoutAdapters.WorkoutListAdapter
 import java.lang.ref.WeakReference
@@ -73,16 +74,28 @@ class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {
 
         homeViewModel.fetchConsumedCalories()
         homeViewModel.consumed.observe(this.viewLifecycleOwner){
-            it-> /*val value = Integer.parseInt(it)
-            when(value){
-                0 -> binding.mealCount.text = "0"
-                in 1..500 -> binding.mealCount.text = "1"
-                in 501..1000 -> binding.mealCount.text = "2"
-                in 1001..1500 -> binding.mealCount.text = "3"
-                in 1501..2000 -> binding.mealCount.text = "4"
-            }*/
+            it->
+            if(it!= ""){
+                val value = it.toString().toInt()
+                when(value){
+                    0 -> binding.mealCount.text = "0"
+                    in 1..500 -> binding.mealCount.text = "1"
+                    in 501..1000 -> binding.mealCount.text = "2"
+                    in 1001..1500 -> binding.mealCount.text = "3"
+                    in 1501..2000 -> binding.mealCount.text = "4"
+                }
+            }
+            else{
+                binding.mealCount.text = "0"
+            }
+
             binding.completed = it
 
+        }
+
+        binding.web.setOnClickListener {
+            var intent = Intent(this.context, WebActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root

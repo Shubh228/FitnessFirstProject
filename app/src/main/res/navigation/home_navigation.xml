@@ -14,4 +14,14 @@
         android:id="@+id/reminderFragment"
         android:name="project.st991558097.shubh.workout.ReminderFragment"
         android:label="Upcoming Workouts" />
+    <fragment
+        android:id="@+id/dietDisplayFragment"
+        android:name="project.st991558097.shubh.diet.DietDisplayFragment"
+        android:label="fragment_diet_display"
+        tools:layout="@layout/fragment_diet_display" />
+    <fragment
+        android:id="@+id/addMealFragment"
+        android:name="project.st991558097.shubh.diet.AddMealFragment"
+        android:label="fragment_add_meal"
+        tools:layout="@layout/fragment_add_meal" />
 </navigation>

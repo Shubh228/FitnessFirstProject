@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -16,6 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutFInalProject"
         tools:targetApi="31">
+        <activity
+            android:name=".web.WebActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".diet.DietActivity"
             android:exported="false">
