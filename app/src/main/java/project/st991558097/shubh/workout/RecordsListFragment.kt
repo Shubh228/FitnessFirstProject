@@ -127,6 +127,7 @@ class RecordsListFragment : Fragment(), RecordsListAdapter.RecordInterface {
         return binding.root
     }
 
+    //Using the RecordList adapter its binding the recycler card view and list for the workout records
     @BindingAdapter("setRecordList")
     fun setRecordList(recyclerView: RecyclerView, list:List<WorkoutRecordItem>?){
         (recyclerView.adapter as RecordsListAdapter).setRecords(list)

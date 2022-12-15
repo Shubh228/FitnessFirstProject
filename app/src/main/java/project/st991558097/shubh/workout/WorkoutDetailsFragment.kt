@@ -77,6 +77,7 @@ class WorkoutDetailsFragment : Fragment(), RecordsListAdapter.RecordInterface {
         return binding.root
     }
 
+    //It will disopkay the workout name and image of workout activity in the home and will get the corresponding result
     private fun displayItems() {
         binding.workoutName.text = workoutName
         Picasso.get().load(workoutImg).into(binding.workoutImg)

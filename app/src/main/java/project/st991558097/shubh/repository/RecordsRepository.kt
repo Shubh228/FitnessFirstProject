@@ -27,6 +27,7 @@ class RecordsRepository {
     private val image = ARG_IMG
     private val dbRef = database.getReference("Users").child(username).child("Records")
 
+    //Below method will get the workout records from our the firebase database
     fun fetchRecordList(liveData: MutableLiveData<List<WorkoutRecordItem>>, name:String, uri:String){
         dbRef.child(name).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

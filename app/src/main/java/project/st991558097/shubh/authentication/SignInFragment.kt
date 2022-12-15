@@ -61,6 +61,7 @@ class SignInFragment : Fragment() {
         return view
     }
 
+    //Validating the user credentials (email and password)
     private fun validateCreds() {
         when{
             TextUtils.isEmpty(email.text.toString().trim()) -> {
@@ -76,6 +77,7 @@ class SignInFragment : Fragment() {
         }
     }
 
+    //Using the firebase authentication we are matching the user credentials with our database
     private fun firebaseLogin() {
         auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener(this.requireActivity()){ task ->

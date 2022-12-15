@@ -63,6 +63,7 @@ class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Ad
         }
     }
 
+    //Below method is to get the user details from the database
     private fun getUserInfo() {
         user?.let {
             val email = user.email
@@ -70,6 +71,7 @@ class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Ad
         }
     }
 
+    //Below method will delete any workout that user want to remove from the list
     private fun removeWorkout(){
         for(rm in removeList){
             dbReference.child("Users").child(username).child("Workouts").child(rm).setValue(null)
@@ -77,6 +79,7 @@ class OnboardingAdapter(private val workouts:List<WorkoutItem>): RecyclerView.Ad
         }
     }
 
+    //This method will allow user a flexbility to add the workout details
     private fun addWorkout() {
         for(workout in workoutList) {
             val n = workout.workoutName

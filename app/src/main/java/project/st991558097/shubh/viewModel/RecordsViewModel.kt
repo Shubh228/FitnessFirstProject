@@ -19,10 +19,12 @@ class RecordsViewModel : ViewModel() {
     private val _recordLiveData= MutableLiveData<List<WorkoutRecordItem>>()
     val recordLiveData:LiveData<List<WorkoutRecordItem>> = _recordLiveData
 
+    // This viewmodel method which will fetch the data using the RecordsRepository
     fun fetchRecordList(name: String, uri:String){
         recordsRepo.fetchRecordList(_recordLiveData, name, uri)
     }
 
+    //This method will display the recent top 5 workout activities using the RecordsRepository
     fun fetchRecentList(name: String, uri: String){
         recordsRepo.fetchRecentList(_recordLiveData,name, uri)
     }

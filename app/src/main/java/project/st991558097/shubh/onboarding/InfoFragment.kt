@@ -67,6 +67,7 @@ class InfoFragment : Fragment() {
         return view
     }
 
+    //Using this method we are validating that user entered value
     private fun validateFields() {
         when{
             TextUtils.isEmpty(age.text.toString().trim()) -> {
@@ -92,6 +93,7 @@ class InfoFragment : Fragment() {
         }
     }
 
+    //This method will save the user body measurement into our firebase database
     private fun saveDetails() {
         val userInfo = UserInformation(age.text.toString(), height.text.toString(), weight.text.toString(), gender.text.toString(), calories.text.toString())
         dbReference.child("Users").child(userName).child("Information").setValue(userInfo)

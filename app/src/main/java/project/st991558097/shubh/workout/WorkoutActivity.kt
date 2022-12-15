@@ -51,6 +51,7 @@ class WorkoutActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    //Uisng the menuitem user can logout from the application
     fun logoutOnClick(item: MenuItem){
         Firebase.auth.signOut()
 

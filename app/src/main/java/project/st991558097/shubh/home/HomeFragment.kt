@@ -109,6 +109,7 @@ class HomeFragment : Fragment(), WorkoutListAdapter.WorkoutItemInterface {
         startActivity(intent)
     }
 
+    //Using custom adapter we are binding the recycler card view and list
     @BindingAdapter("setItems")
     fun setItems(recyclerView: RecyclerView, list:List<WorkoutItem>?){
         (recyclerView.adapter as WorkoutListAdapter).setItems(list)

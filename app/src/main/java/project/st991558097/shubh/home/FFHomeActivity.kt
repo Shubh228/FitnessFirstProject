@@ -65,6 +65,7 @@ class FFHomeActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    //Using the menu item user can logout from the application
     fun logoutOnClick(item: MenuItem){
         Firebase.auth.signOut()
 

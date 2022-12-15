@@ -20,6 +20,7 @@ class WorkoutRepository {
     private val database= Firebase.database
     private val dbRef = database.getReference("Users").child(username).child("Workouts")
 
+    //Will display the workout list activities that user has enrolled in while signing up for our application
     fun fetchWorkoutList(liveData: MutableLiveData<List<WorkoutItem>>){
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
