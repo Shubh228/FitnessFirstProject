@@ -55,18 +55,17 @@ class DietDisplayFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.RIGHT -> {
-                        val builder = AlertDialog.Builder(context)
+                        mealListAdapter.deleteItem(viewHolder.adapterPosition)
+                        /*val builder = AlertDialog.Builder(context)
                         builder.setMessage("Are you sure you want to Delete?")
                             .setCancelable(false)
                             .setPositiveButton("Yes") { dialog, id ->
-                                mealListAdapter.deleteItem(viewHolder.adapterPosition)
                             }
                             .setNegativeButton("No") { dialog, id ->
-
                                 dialog.dismiss()
                             }
                         val alert = builder.create()
-                        alert.show()
+                        alert.show()*/
                     }
 
                     ItemTouchHelper.LEFT -> {

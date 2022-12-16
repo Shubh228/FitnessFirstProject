@@ -17,11 +17,11 @@
     <fragment
         android:id="@+id/dietDisplayFragment"
         android:name="project.st991558097.shubh.diet.DietDisplayFragment"
-        android:label="fragment_diet_display"
+        android:label="Meals"
         tools:layout="@layout/fragment_diet_display" />
     <fragment
         android:id="@+id/addMealFragment"
         android:name="project.st991558097.shubh.diet.AddMealFragment"
-        android:label="fragment_add_meal"
+        android:label="Add meal"
         tools:layout="@layout/fragment_add_meal" />
 </navigation>

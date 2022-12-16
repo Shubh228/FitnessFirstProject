@@ -4,21 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="project.st991558097.shubh.viewModel.HomeViewModel" />
-        <variable
-            name="greeting"
-            type="String" />
-        <variable
-            name="completed"
-            type="String" />
-        <variable
-            name="target"
-            type="String" />
-    </data>
 
 
     <RelativeLayout
@@ -240,4 +225,20 @@
 
     </RelativeLayout>
 
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="project.st991558097.shubh.viewModel.HomeViewModel" />
+        <variable
+            name="greeting"
+            type="String" />
+        <variable
+            name="completed"
+            type="String" />
+        <variable
+            name="target"
+            type="String" />
+    </data>
 </layout>

@@ -137,11 +137,11 @@ class AddRecordFragment : Fragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             // formatting date in dd/mm/yyyy format.
+            Log.d("long", it.toString())
             val dateFormatter = SimpleDateFormat("dd/MM/yyyy")
-            val date = dateFormatter.format(Date(it))
+            val date = dateFormatter.format(Date(it + 86400000 ))
             binding.date = date
             dateText = date
-            Toast.makeText(context, "$date is selected", Toast.LENGTH_LONG).show()
 
         }
 

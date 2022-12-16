@@ -105,7 +105,7 @@ class PlanWorkoutFragment : Fragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             val dateFormatter = SimpleDateFormat("dd/MM/yyyy")
-            val selectedDate = dateFormatter.format(Date(it))
+            val selectedDate = dateFormatter.format(Date(it + 86400000))
             reminderDate = selectedDate
             date = Integer.parseInt(selectedDate.split("/")[0])
             month = Integer.parseInt(selectedDate.split("/")[1])
